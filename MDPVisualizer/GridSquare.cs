@@ -10,22 +10,22 @@ namespace MDPVisualizer
 {
     public class GridSquare
     {
+        public Rectangle BoundingBox { get; private set; }
         public Vector2 Coordinates;
         public Color Color;
         private Texture2D texture;
-        public Rectangle boundingBox { get; private set; }
 
         public GridSquare(Texture2D texture, Vector2 coordinates, Rectangle boundingBox, Color color)
         {
             this.texture = texture;
             this.Coordinates = coordinates;
-            this.boundingBox = boundingBox;
+            this.BoundingBox = boundingBox;
             this.Color = color;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, boundingBox, Color);
+            spriteBatch.Draw(texture, BoundingBox, Color);
         }
     }
 }
