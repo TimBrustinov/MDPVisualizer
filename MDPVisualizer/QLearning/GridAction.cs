@@ -9,6 +9,7 @@ namespace MDPVisualizer.QLearning
 {
     public enum ActionDirection
     {
+        None,
         Up,
         Down,
         Left,
@@ -17,7 +18,7 @@ namespace MDPVisualizer.QLearning
     public class GridAction
     {
         public ActionDirection IntendedDirection { get; private set; }
-        public double IntendedDirectionProbability => outcomeProbabilities[IntendedDirection];
+        //public double IntendedDirectionProbability => outcomeProbabilities[IntendedDirection];
 
         private Dictionary<ActionDirection, double> outcomeProbabilities = new()
         {
@@ -41,7 +42,7 @@ namespace MDPVisualizer.QLearning
             outcomeProbabilities = new Dictionary<ActionDirection, double>();
             SetProbabilities();
         }
-        public (ActionDirection, Point) GetOutcomeDirection()
+        public (ActionDirection actionTaken, Point direction) GetOutcomeDirection()
         {
             double randomValue = new Random().NextDouble();
             double cumulativeProbability = 0;
