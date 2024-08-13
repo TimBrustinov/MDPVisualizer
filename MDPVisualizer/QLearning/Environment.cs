@@ -45,7 +45,6 @@ namespace MDPVisualizer.QLearning
             {
                 actionTaken = CurrentState.HighestValuedAction.Key.IntendedDirection;
             }
-
             PerformAction(learningRate, actionTaken);
         }
 
@@ -55,7 +54,6 @@ namespace MDPVisualizer.QLearning
             var actionTakenOutcome = CurrentState.GridActions[actionTaken].GetOutcomeDirection();
             //calculates the grid position of the next step
             var nextStep = new Point(actionTakenOutcome.direction.X + CurrentState.GridCoordinates.X, actionTakenOutcome.direction.Y + CurrentState.GridCoordinates.Y);
-
             
             // check if the next step is out of bounds or is a wall
             if (nextStep.X >= 0 && nextStep.X < StateGrid.GetLength(0) && nextStep.Y >= 0 && nextStep.Y < StateGrid.GetLength(1) && StateGrid[nextStep.X, nextStep.Y].Type != SquareType.Wall)

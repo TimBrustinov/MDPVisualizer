@@ -41,12 +41,12 @@ namespace MDPVisualizer
             {
                 for (int j = 0; j < states.GetLength(1); j++)
                 {
-                    states[i, j] = new State(SquareType.Empty, 1, false, new Point(i, j));
+                    states[i, j] = new State(SquareType.Empty, 0, false, new Point(i, j));
                 }
             }
 
-            states[1, 1] = new State(SquareType.Wall, -1, false, new Point(1, 1));
-            states[3, 1] = new State(SquareType.FirePitHell, -100, true, new Point(3, 1));
+            states[1, 1] = new State(SquareType.Wall, 0, false, new Point(1, 1));
+            states[3, 1] = new State(SquareType.FirePitHell, -10000, true, new Point(3, 1));
             states[3, 0] = new State(SquareType.Goal, 100, true, new Point(3, 0));
 
             for (int i = 0; i < grid.GetLength(0); i++)
@@ -55,11 +55,11 @@ namespace MDPVisualizer
                 {
                     if (states[i, j].Type == SquareType.FirePitHell)
                     {
-                        grid[i, j] = new GridSquare(pixel, arrowTexture, new Vector2(i, j), new Rectangle(i * (squareSize.X + spacing), j * (squareSize.Y + spacing), squareSize.X, squareSize.Y), Color.Orange);
+                        grid[i, j] = new GridSquare(pixel, arrowTexture, new Vector2(i, j), new Rectangle(i * (squareSize.X + spacing), j * (squareSize.Y + spacing), squareSize.X, squareSize.Y), Color.Red);
                     }
                     else if (states[i,j].Type == SquareType.Goal)
                     {
-                        grid[i, j] = new GridSquare(pixel, arrowTexture, new Vector2(i, j), new Rectangle(i * (squareSize.X + spacing), j * (squareSize.Y + spacing), squareSize.X, squareSize.Y), Color.Green);
+                        grid[i, j] = new GridSquare(pixel, arrowTexture, new Vector2(i, j), new Rectangle(i * (squareSize.X + spacing), j * (squareSize.Y + spacing), squareSize.X, squareSize.Y), Color.Yellow);
                     }
                     else if (states[i, j].Type == SquareType.Wall)
                     {
