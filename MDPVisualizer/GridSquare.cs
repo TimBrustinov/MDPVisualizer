@@ -29,7 +29,7 @@ namespace MDPVisualizer
             this.Color = color;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void Draw(SpriteBatch spriteBatch)
         {
             if(IsCurrentState)
             {
@@ -71,9 +71,8 @@ namespace MDPVisualizer
             // Calculate scaling to fit and provide padding
             float scaleX = (float)BoundingBox.Width / arrowTexture.Width;
             float scaleY = (float)BoundingBox.Height / arrowTexture.Height;
-            float scale = Math.Min(scaleX, scaleY) * 0.8f;  // 80% of the bounding box size
+            float scale = Math.Min(scaleX, scaleY) * 0.8f;  
 
-            // Draw the arrow
             spriteBatch.Draw(arrowTexture, arrowPosition, null, Color.White, rotation, arrowOrigin, scale, SpriteEffects.None, 0f);
         }
     }

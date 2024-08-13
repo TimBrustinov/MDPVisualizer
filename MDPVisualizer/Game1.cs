@@ -48,7 +48,10 @@ namespace MDPVisualizer
             states[1, 1] = new State(SquareType.Wall, 0, false, new Point(1, 1));
             states[3, 1] = new State(SquareType.FirePitHell, -10000, true, new Point(3, 1));
             states[3, 0] = new State(SquareType.Goal, 100, true, new Point(3, 0));
+            
+            learningEnvironment = new(states, 0.98);
 
+            //ugly visual grid initialization
             for (int i = 0; i < grid.GetLength(0); i++)
             {
                 for (int j = 0; j < grid.GetLength(1); j++)
@@ -72,7 +75,6 @@ namespace MDPVisualizer
                 }
             }
 
-             learningEnvironment = new(states, 0.98);
             
             
             base.Initialize();
